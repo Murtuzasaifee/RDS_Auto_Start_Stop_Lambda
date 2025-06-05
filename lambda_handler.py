@@ -48,7 +48,7 @@ def stop_db_instances():
                     # Check for autostop tag
                     for tag in get_tags:
                         if tag['Key'] == 'autostop' and tag['Value'].lower() == 'yes':
-                            # rds.stop_db_instance(DBInstanceIdentifier=db['DBInstanceIdentifier'])
+                            rds.stop_db_instance(DBInstanceIdentifier=db['DBInstanceIdentifier'])
                             stopped_instances.append(db['DBInstanceIdentifier'])
                             print(f"Stopping instance: {db['DBInstanceIdentifier']}")
                             break
@@ -84,7 +84,7 @@ def start_db_instances():
                     # Check for autostart tag
                     for tag in get_tags:
                         if tag['Key'] == 'autostart' and tag['Value'].lower() == 'yes':
-                            # rds.start_db_instance(DBInstanceIdentifier=db['DBInstanceIdentifier'])
+                            rds.start_db_instance(DBInstanceIdentifier=db['DBInstanceIdentifier'])
                             started_instances.append(db['DBInstanceIdentifier'])
                             print(f"Starting instance: {db['DBInstanceIdentifier']}")
                             break
